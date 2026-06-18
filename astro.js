@@ -118,8 +118,8 @@ diceVideo.onended = () => {
   ) {
     //  修正後：HTMLのタグ（<br>など）として認識して表示する
 messageBox.innerHTML = messages[result.planet][result.sign][result.house];
-  } else {
-    messageBox.textContent =
-      'まだこの組み合わせのメッセージは登録されていません。';
+ } else {
+    // ここも textContent から innerHTML に変更
+    messageBox.innerHTML = 'まだこの組み合わせのメッセージは登録されていません。';
   }
 };
