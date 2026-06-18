@@ -21,6 +21,15 @@ h1 {
   text-shadow: 0 0 10px #45a29e;
 }
 
+/* 🖼️ 【新しく追加】表紙画像のサイズを動画と完全に統一する */
+.cover-image-area img {
+  border-radius: 20px;
+  width: 100%;
+  max-height: 480px; /* 動画のmax-heightと合わせました */
+  object-fit: cover; /* 縦長画像を枠内に綺麗に収めます */
+  margin-bottom: 10px;
+}
+
 /* 🎥 動画 */
 .dice-video {
   border-radius: 20px;
@@ -81,13 +90,16 @@ button:hover {
   border-radius: 15px;
   font-size: 0.95rem;
   line-height: 1.6;
-  opacity: 0;
+  text-align: left; /* 左詰めにすると、解説テキストが圧倒的に読みやすくなります！ */
+  /* 👇 修正：最初は非表示にするため、アニメーション用の初期設定を調整 */
+}
+
+/* ✨ フェードイン効果（動画が終わった後にフワッと出す用） */
+.message-box[style*="display: block"] {
   animation: fadeIn 1s ease forwards;
 }
 
-/* ✨ フェードイン効果 */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
