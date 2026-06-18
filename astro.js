@@ -1,7 +1,7 @@
 // ===============================
 // グローバル変数
 // ===============================
-let messages = {};  
+// let messages = {};  
 let currentResult = null; // ← 動画終了後に使うため保存
 
 // ===============================
@@ -41,7 +41,6 @@ const videoFiles = [
   'videos/dice12.mp4',
   'videos/dice13.mp4',
   'videos/dice14.mp4',
-
 ];
 
 // ===============================
@@ -61,6 +60,15 @@ fetch("data/messages.json")
 // ▶ ダイス再生ボタン
 // ===============================
 rollButton.addEventListener("click", () => {
+
+  // 🔹 【追加】最初の画像を非表示にする
+  const coverImage = document.getElementById('coverImage');
+  if (coverImage) {
+    coverImage.style.display = 'none';
+  }
+
+  // 🔹 【追加】非表示になっていた動画エリアを表示する
+  diceVideo.style.display = 'block';
 
   // 🔹 動画を再生している間は結果を隠す
   resultArea.style.display = "none";
@@ -84,6 +92,9 @@ rollButton.addEventListener("click", () => {
 // ===============================
 diceVideo.onended = () => {
 
+  // 🔹 【追加】動画が終わったら動画自体を非表示にする（スッキリさせるため）
+  diceVideo.style.display = 'none';
+
   const result = currentResult;
   if (!result) return;
 
@@ -97,6 +108,10 @@ diceVideo.onended = () => {
   houseImage.src = `images/houses/${result.house}.png`;
   houseName.textContent = `${result.house}`;
 
+  // ▼ 【追加修正】結果を表示状態（flexやblockなど）にする
+  resultArea.style.display = "flex"; 
+  messageBox.style.display = "block";
+
   // ▼ メッセージ表示
   if (
     messages[result.planet] &&
@@ -109,7 +124,7 @@ diceVideo.onended = () => {
     messageBox.textContent =
       'まだこの組み合わせのメッセージは登録されていません。';
   }
-
+});
   // 🌟 結果表示！
   resultArea.style.display = "flex";
   messageBox.style.display = "block";
