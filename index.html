@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アストロダイス</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Astro Dice</h1>
+
+    <!-- 🎥 ダイス動画（最初は非表示） -->
+    <video id="diceVideo" class="dice-video" width="360" height="640" playsinline></video>
+
+    <!-- 🎲 ダイスを振るボタン -->
+    <div class="button-container">
+      <button id="rollButton">🎲 ダイスを振る</button>
+    </div>
+
+    <!-- 🌌 結果表示エリア（最初は動画後に表示） -->
+    <div id="resultArea" class="result" style="display: none;">
+      <div class="result-item">
+        <img id="planetImage" src="images/planets/default.png" alt="planet">
+        <p id="planetName">―</p>
+      </div>
+      <div class="result-item">
+        <img id="signImage" src="images/signs/default.png" alt="sign">
+        <p id="signName">―</p>
+      </div>
+      <div class="result-item">
+        <img id="houseImage" src="images/houses/default.png" alt="house">
+        <p id="houseName">―</p>
+      </div>
+    </div>
+
+    <!-- 💬 結果メッセージ -->
+    <div id="messageBox" class="message-box" style="display: none;"></div>
+  </div>
+
+  <!-- JS -->
+  <script src="astro.js" defer></script>
+</body>
+</html>
+
